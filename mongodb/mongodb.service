@@ -1,0 +1,14 @@
+[Unit]
+Description=mongodb server 4.4.2 in docker
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/software/docker/containers/mongodb/4.4.2
+#PIDFile=/var/run/mongo.pid
+ExecStart=/usr/bin/docker-compose up
+ExecReload=/usr/bin/docker-compose restart
+ExecStop=/usr/bin/docker-compose down
+
+[Install]
+WantedBy=multi-user.target
