@@ -1,0 +1,23 @@
+version: "3.1"
+
+services:
+  mysql:
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: mysql        # 指定容器的名称
+    image: mysql:8.0.22          # 指定镜像和版本
+    network_mode: "host"
+    restart: always
+    ports:
+      - "3306:3306"
+      - "33060:33060"
+    command: 
+      --default-authentication-plugin=mysql_native_password
+      --skip-mysqlx=1
+    environment:
+      MYSQL_ROOT_PASSWORD: jim
+      MYSQL_ROOT_HOST: "172.17.0.1"
+      MYSQL_ALLOW_EMPTY_PASSWORD: "false"
+      MYSQL_DIR: /
+    volumes:
+      - /var/lib/mysql:/data/docker/mysql/8.0.22/data:rw           # 挂载数据目录
+      - /etc/mysql:/data/docker/mysql/8.0.22/conf:ro               # 挂载配置文件目录

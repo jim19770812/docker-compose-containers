@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  mongo:
+    image: mongo:4.4.2
+    container_name: "mongo_4.4.2"
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: jim
+    ports:
+      - 27017:27017
+    volumes: 
+      - /data/mongo/db:/data/docker/mongodb/data:rw
+      - /data/mongo/log:/var/log/mongodb:rw
