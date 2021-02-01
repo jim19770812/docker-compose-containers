@@ -1,0 +1,15 @@
+version: '3.6'
+
+services:
+  nexus:
+      restart: always
+      image: sonatype/nexus3:3.29.2
+      environment:
+        - INSTALL4J_ADD_VM_PARAMS=-Xms2g -Xmx2g -XX:MaxDirectMemorySize=2g -Djava.util.prefs.userRoot=/nexus-data/javaprefs -Duser.timezone=Asia/Shanghai
+      volumes:
+        - /etc/localtime:/etc/localtime:ro
+        - /etc/timezone:/etc/timezone:ro
+        #- /var/run/docker.sock:/var/run/docker.sock
+        - /data/docker/nexus3-data:/nexus-data:rw
+      ports:
+        - "8081:8081"
