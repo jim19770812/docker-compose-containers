@@ -1,0 +1,11 @@
+#从容器里要把hosts的内容复制出来
+127.0.0.1	localhost
+::1	localhost ip6-localhost ip6-loopback
+fe00::0	ip6-localnet
+ff00::0	ip6-mcastprefix
+ff02::1	ip6-allnodes
+ff02::2	ip6-allrouters
+172.252.0.5	b5f21419d6dd
+
+#下面是你自己需要在容器里配置的hosts内容
+127.0.0.1 api.risk.dev api.notice.dev api.utils.dev

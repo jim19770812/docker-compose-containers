@@ -1,0 +1,55 @@
+version: "3.3"
+services:
+    openresty:
+        pid: "host"
+        image: openresty/openresty:alpine
+        ports:
+           - "${NGINX_HTTP_HOST_PORT}:80"
+           - "${NGINX_HTTPS_HOST_PORT}:443"
+        volumes:
+            - ${NGINX_APPLICATION_DIR}:/data/source:ro
+            - ${NGINX_DOCKER_CONF_ROOT}/nginx-vhosts:/data/nginx-vhosts:ro
+            - ${NGINX_DOCKER_CONF_ROOT}/conf/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf:ro
+            - ${DOCKER_ROOT}/var/log/openresty:/data/wwwlogs:rw
+            - ${DOCKER_ROOT}/var/log/openresty/log:/var/log:rw
+        container_name: openresty
+        shm_size: 64M
+        stdin_open: true
+        tty: true
+        links:
+          - redis
+        restart: "no"
+        networks:
+            default:
+                ipv4_address: ${NGINX_IP}
+
+    redis:
+        pid: "host"
+        image: redis:${REDIS_VERSION}
+        ports:
+          - "${REDIS_HOST_PORT}:6379"
+        volumes:
+          - ${REDIS_CONF_FILE}:/etc/redis.conf:ro
+          - /data/docker/redis:/data:rw
+          - /data/docker/redis/init.sh:/etc/init.sh:ro
+        container_name: redis
+        shm_size: 64M
+        sysctls:
+          - net.core.somaxconn=511
+          - net.ipv4.tcp_syncookies= 0
+        stdin_open: true
+        tty: true
+        restart: "no"
+        entrypoint: ["sysctl", "vm.overcommit_memory", "1"]
+        entrypoint: ["redis-server", "/etc/redis.conf"]
+        networks:
+            default:
+                ipv4_address: ${REDIS_IP}
+
+networks:
+    default:
+        driver: bridge
+        ipam:
+            driver: default
+            config:
+                - subnet: ${DOCKER_SUBNET}

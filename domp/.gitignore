@@ -1,0 +1,6 @@
+.env
+*.bak
+*.jim19770812
+*.offical
+docker/openresty/nginx-vhosts/1
+docker/openresty/nginx-vhosts/local-vhosts/1
