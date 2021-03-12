@@ -18,5 +18,5 @@ services:
       MYSQL_ALLOW_EMPTY_PASSWORD: "false"
       MYSQL_DIR: /
     volumes:
-      - /var/lib/mysql:/data/docker/mysql/8.0.22/data:rw           # 挂载数据目录
-      - /etc/mysql:/data/docker/mysql/8.0.22/conf:ro               # 挂载配置文件目录
+      - /data/docker/mysql/8.0.22/data:/var/lib/mysql:rw           # 挂载数据目录
+      - /data/docker/mysql/8.0.22/conf:/etc/mysql:ro               # 挂载配置文件目录
