@@ -9,7 +9,6 @@ services:
     restart: always
     ports:
       - "3306:3306"
-      - "33060:33060"
     command: 
       --default-authentication-plugin=mysql_native_password
       --skip-mysqlx=1

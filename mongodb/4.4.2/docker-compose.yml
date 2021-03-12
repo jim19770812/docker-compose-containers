@@ -11,5 +11,7 @@ services:
     ports:
       - 27017:27017
     volumes: 
-      - /data/mongo/db:/data/docker/mongodb/data:rw
-      - /data/mongo/log:/var/log/mongodb:rw
+      - /data/docker/mongo/db:/data/db:rw
+      - /data/docker/mongodb/conf/mongod.conf:/etc/mongod.conf:ro
+      - /data/docker/mongo/log:/var/log/mongodb:rw
+
