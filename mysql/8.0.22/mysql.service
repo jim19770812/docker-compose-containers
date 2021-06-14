@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/opt/software/docker-compose-containers/mysql/8.0.22
+WorkingDirectory=/opt/devs/docker-compose-containers/mysql/8.0.22
 PIDFile=/var/run/mysql.pid
 ExecStart=/usr/bin/docker-compose up
 ExecReload=/usr/bin/docker-compose restart
