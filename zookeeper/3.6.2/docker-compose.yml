@@ -1,0 +1,18 @@
+version: "3.1"
+
+services:
+  zk-01:
+    container_name: zk-01           # 指定容器的名称
+    image: zookeeper:3.6.2          # 指定镜像和版本
+    network_mode: "host"
+    restart: always
+    ports:
+      - "2181:2181"
+    #command: 
+    #  --default-authentication-plugin=mysql_native_password
+    #  --skip-mysqlx=1
+    environment:
+        ZOO_MY_ID: 1
+    volumes:
+      - /data/docker/mysql/8.0.22/data:/var/lib/mysql:rw           # 挂载数据目录
+      - /data/docker/mysql/8.0.22/conf:/etc/mysql:ro               # 挂载配置文件目录
