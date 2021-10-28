@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=PowerDesigner
+WorkingDirectory=/opt/devs/docker-compose-containers/power-designer
+Exec=/bin/sh -c "cd /opt/devs/docker-compose-containers/power-designer && /usr/bin/docker-compose up && /usr/bin/docker-compose down"
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+Icon=/opt/devs/docker-compose-containers/power-designer/pd.png
+Keywords=pd;power;powerdesigner;designer
+Categories=Application;Development
+StartupNotify=true
