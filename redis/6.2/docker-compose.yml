@@ -1,0 +1,29 @@
+version: "3.3"
+services:
+    redis:
+        pid: "host"
+        image: "redis:6.2.4-alpine3.13"
+        ports:
+          - "6379:6379"
+        container_name: redis
+        shm_size: 64M
+#        sysctls:
+#          - net.core.somaxconn=511
+#          - net.ipv4.tcp_syncookies= 0
+        stdin_open: true
+        tty: true
+        restart: "no"
+#        command: >  #可以覆盖容器启动后默认执行的命令
+#           /bin/sh -c "echo vm.overcommit_memory = 1 >> /etc/sysctl.conf"
+#        command: /bin/sh -c "echo 'vm.overcommit_memory = 1' >> /etc/sysctl.conf && sysctl -p"
+#        entrypoint: ["/bin/sh", "-c", "echo 'vm.overcommit_memory = 1' >> /etc/sysctl.conf && sysctl -p"]
+#        entrypoint: ["redis-server"]
+#        entrypoint: ["echo","vm.overcommit_memory=1", ">>", "/etc/sysctl.conf"]
+#        entrypoint: ["/usr/bin/echo", "net.core.somaxconn=65535>> /etc/sysctl.conf"]
+#        entrypoint: ["sysctl", "-p"]
+#        entrypoint: ["redis-server"]
+        volumes:
+          - /opt/devs/docker-compose-containers/redis/6.2/data:/data:rw
+          - /opt/devs/docker-compose-containers/redis/6.2/sysctl.conf:/etc/sysctl.conf:ro
+
+#        entrypoint: ["redis-server", "/etc/redis.conf"]

@@ -3,11 +3,12 @@ Encoding=UTF-8
 Name=微信
 Comment=wechat;微信
 GenericName=wechat
-Keywords=WeChat;wechat;weixin;wei
-Exec=/bin/sh -c "cd /opt/software/docker-compose-containers/wechat && /usr/bin/docker-compose up && /usr/bin/docker-compose down"
+Keywords=WeChat;wechat;weixin;wei;wx
+Exec=/bin/sh -c "cd /opt/devs/docker-compose-containers/wechat && /usr/bin/docker-compose up && /usr/bin/docker-compose down"
 Terminal=false
 X-MultipleArgs=false
 Type=Application
-Icon=/opt/software/docker/containers/wechat/wechat.png
+Icon=/opt/devs/docker-compose-containers/wechat/wechat.png
 Categories=Application;Network
 StartupNotify=true
+

@@ -2,7 +2,7 @@ version: '3.6'
 services:
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:$ELASTIC_VERSION
+    image: elasticsearch:7.14.0
     environment:
       - bootstrap.memory_lock=true
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
@@ -11,18 +11,21 @@ services:
       memlock:
         soft: -1
         hard: -1
-    mem_limit: 1g
+#    mem_limit: 1g
     volumes:
-      - esdata1:/usr/share/elasticsearch/data
+      - /opt/devs/docker-compose-containers/elasticsearch+kibana/elasticsearch/data:/usr/share/elasticsearch/data:rw
+      - /opt/devs/docker-compose-containers/elasticsearch+kibana/elasticsearch/plugins:/usr/share/elasticsearch/plugins:ro
     ports:
       - 9200:9200
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:$ELASTIC_VERSION
+    image: kibana:7.14.0
     links:
       - elasticsearch
     ports:
       - 5601:5601
+    volumes:
+      - /opt/devs/docker-compose-containers/elasticsearch+kibana/kibana/config:/usr/share/kibana/config:ro
 
 volumes:
   esdata1:
