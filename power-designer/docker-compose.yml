@@ -8,7 +8,8 @@ services:
       - /dev/snd
     volumes:
       - /tmp/.X11-unix:/tmp/.X11-unix
-      - /home/jim/documents:/SAPFiles #使用自己的目录
+      - /home/jim/documents:/SAPFiles:rw #使用自己的目录
+      - /data:/data:rw
     environment:
       - DISPLAY=unix$DISPLAY
       - QT_IM_MODULE=fcitx

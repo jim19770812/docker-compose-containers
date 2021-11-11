@@ -4,6 +4,7 @@ services:
     image: bestwu/wechat
     container_name: wechat
     ipc: host
+    network_mode: "host"
     devices:
       - /dev/snd
     volumes:
