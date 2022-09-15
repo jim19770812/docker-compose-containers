@@ -8,8 +8,8 @@ services:
     image: mysql:8.0.22          # 指定镜像和版本
     network_mode: "host"
     restart: always
-    ports:
-      - "3306:3306"
+      #    ports:
+      #      - "3306:3306"
     command: 
       --default-authentication-plugin=mysql_native_password
       --skip-mysqlx=1
