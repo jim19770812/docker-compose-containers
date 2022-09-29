@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/opt/software/docker-compose-containers/mongodb/4.4.4
+WorkingDirectory=/opt/devs/docker-compose-containers/mongodb/4.4.4
 #PIDFile=/var/run/mongo.pid
 ExecStart=/usr/bin/docker-compose up
 ExecReload=/usr/bin/docker-compose restart
