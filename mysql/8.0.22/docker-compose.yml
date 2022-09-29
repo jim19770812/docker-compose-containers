@@ -3,7 +3,6 @@ version: "3.1"
 services:
   mysql:
     pid: "host"
-#    command: --default-authentication-plugin=mysql_native_password  #和下面的重复了，但不知道哪个有效
     container_name: mysql        # 指定容器的名称
     image: mysql:8.0.22          # 指定镜像和版本
     network_mode: "host"
@@ -21,6 +20,7 @@ services:
     volumes:
       - /data/docker/mysql/8.0.22/data:/var/lib/mysql:rw           # 挂载数据目录
       - /data/docker/mysql/8.0.22/conf:/etc/mysql:ro               # 挂载配置文件目录
+      - /var/lib/mysql-files:/var/lib/mysql-files:rw
         #      - /var/run/mysql.pid:/var/run/mysqld/mysqld.sock:rw          # 映射sock文件
     shm_size: 64M
     stdin_open: true
