@@ -14,6 +14,7 @@ services:
       - /data/logs:/data/logs:rw
       - /home/jim/source/java/projects/goldendata-qd-client/dist:/data/goldendata-qd-client/dist:ro
       - /home/jim/source/java/projects/goldendata-qd-mp-client/dist:/data/goldendata-qd-mp-client/dist:ro
+      - /home/jim:/home/jim:ro
     restart: always
     environment:
       - SET_CONTAINER_TIMEZONE=true
@@ -22,3 +23,4 @@ services:
       - "gd.local:host-gateway"
       - "gd.mp.local:host-gateway"
       - "host.docker.internal:host-gateway"
+      - "files.local:host-gateway"

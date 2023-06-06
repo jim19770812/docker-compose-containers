@@ -1,0 +1,33 @@
+version: '3.6'
+services:
+
+  jenkins:
+    image: jenkins/jenkins:lts
+    environment:
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+#    mem_limit: 1g
+    volumes:
+      - /opt/devs/docker-compose-containers/elasticsearch+kibana/elasticsearch/data:/usr/share/elasticsearch/data:rw
+      - /opt/devs/docker-compose-containers/elasticsearch+kibana/elasticsearch/plugins:/usr/share/elasticsearch/plugins:ro
+    ports:
+      - 8080:8080
+      - 50000:50000
+
+  kibana:
+    image: kibana:7.14.0
+    links:
+      - elasticsearch
+    ports:
+      - 5601:5601
+    volumes:
+      - /opt/devs/docker-compose-containers/elasticsearch+kibana/kibana/config:/usr/share/kibana/config:ro
+
+volumes:
+  esdata1:
+    driver: local

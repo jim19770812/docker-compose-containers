@@ -2,7 +2,7 @@ version: "3.3"
 services:
     redis:
         pid: "host"
-        image: "redis:6.2.4-alpine3.13"
+        image: "redis:7.0.11-alpine"
         ports:
           - "6379:6379"
         container_name: redis
@@ -23,7 +23,7 @@ services:
 #        entrypoint: ["sysctl", "-p"]
 #        entrypoint: ["redis-server"]
         volumes:
-          - /opt/devs/docker-compose-containers/redis/6.2/data:/data:rw
-          - /opt/devs/docker-compose-containers/redis/6.2/sysctl.conf:/etc/sysctl.conf:ro
+          - /opt/devs/docker-compose-containers/redis/7.0.11-alpine/data:/data:rw
+          - /opt/devs/docker-compose-containers/redis/7.0.11-alpine/sysctl.conf:/etc/sysctl.conf:ro
 
 #        entrypoint: ["redis-server", "/etc/redis.conf"]

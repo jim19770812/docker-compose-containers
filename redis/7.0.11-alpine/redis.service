@@ -1,11 +1,10 @@
 [Unit]
-Description=redis server 6.2 in docker
+Description=redis server 7.0.11-alpine in docker
 After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/opt/devs/docker-compose-containers/redis/6.2
-#PIDFile=/var/run/mongo.pid
+WorkingDirectory=/opt/devs/docker-compose-containers/redis/7.0.11-alpine
 ExecStart=/usr/bin/docker-compose up
 ExecReload=/usr/bin/docker-compose restart
 ExecStop=/usr/bin/docker-compose down
