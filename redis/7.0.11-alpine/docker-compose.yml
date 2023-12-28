@@ -23,7 +23,7 @@ services:
 #        entrypoint: ["sysctl", "-p"]
 #        entrypoint: ["redis-server"]
         volumes:
-          - /opt/devs/docker-compose-containers/redis/7.0.11-alpine/data:/data:rw
+          - /data/docker/redis/data:/data:rw
           - /opt/devs/docker-compose-containers/redis/7.0.11-alpine/sysctl.conf:/etc/sysctl.conf:ro
 
 #        entrypoint: ["redis-server", "/etc/redis.conf"]
