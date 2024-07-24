@@ -1,7 +1,7 @@
 version: '3'
 services:
   wechat:
-    image: bestwu/wechat
+    image: bestwu/wechat:2.6.8.65deepin0
     container_name: wechat
     ipc: host
     network_mode: "host"
@@ -11,6 +11,7 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - /opt/downloads/wechatfiles:/WeChatFiles #使用自己用户目录
       - /run/user/1000/pulse/native:/run/user/1000/pulse/native
+    restart: "always"
     environment:
       - DISPLAY=unix$DISPLAY
       - QT_IM_MODULE=fcitx

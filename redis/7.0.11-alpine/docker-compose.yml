@@ -12,7 +12,7 @@ services:
 #          - net.ipv4.tcp_syncookies= 0
         stdin_open: true
         tty: true
-        restart: "no"
+        restart: "always"
 #        command: >  #可以覆盖容器启动后默认执行的命令
 #           /bin/sh -c "echo vm.overcommit_memory = 1 >> /etc/sysctl.conf"
 #        command: /bin/sh -c "echo 'vm.overcommit_memory = 1' >> /etc/sysctl.conf && sysctl -p"
