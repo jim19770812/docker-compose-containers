@@ -13,6 +13,7 @@ services:
       - /tmp/.X11-unix:/tmp/.X11-unix
       - /opt/downloads/wechatfiles:/WeChatFiles #使用自己用户目录
       - /run/user/1000/pulse/native:/run/user/1000/pulse/native
+      - /run/user/1000/at-spi/bus_0:/run/user/1000/at-spi/bus_0
     restart: "always"
     environment:
       - DISPLAY=unix$DISPLAY
