@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  mongo:
+    image: mongo:4.0.3
+    container_name: "mongo_4.0.3"
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: jim
+    command: mongod --auth
+    ports:
+      - 27017:27017
+    volumes: 
+      - /data/docker/mongodb/db:/data/db:rw
+      - /data/docker/mongodb/conf/mongod.conf:/etc/mongod.conf:ro
+
