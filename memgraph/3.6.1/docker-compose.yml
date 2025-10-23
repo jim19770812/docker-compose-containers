@@ -1,0 +1,27 @@
+services:
+  memgraph:
+    image: memgraph/memgraph-mage:3.6.1
+    container_name: memgraph-mage
+    restart: always
+    volumes:
+      - /data/docker/memgraph/mg_lib:/var/lib/memgraph
+      - /data/docker/memgraph/mg_log:/var/log/memgraph
+    ports:
+      - "7687:7687"
+      - "7444:7444"
+    command: ["--log-level=DEBUG"]
+  #    environment:
+  #      - GID=sgx # 可选 默认1000 主机当前用户 gid 解决挂载目录访问权限问题
+  #      - UID=syslog # 可选 默认1000 主机当前用户 uid 解决挂载目录访问权限问题
+
+  lab:
+    image: memgraph/lab:3.6.1
+    container_name: memgraph-lab
+    ports:
+      - "3000:3000"
+    restart: always
+    depends_on:
+      - memgraph
+    environment:
+      - QUICK_CONNECT_MG_HOST=memgraph
+      - QUICK_CONNECT_MG_PORT=7687
